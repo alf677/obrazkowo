@@ -8,7 +8,7 @@ before_action :correct_user, only: [:edit, :update,:destroy]
   # GET /pins
   # GET /pins.json
   def index
-    @pins = Pin.all
+    @pins = @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page],:per_page => 3)
   end
 
   # GET /pins/1
